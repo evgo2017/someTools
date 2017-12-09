@@ -1,0 +1,31 @@
+# Java 简易通讯录带数据库打包
+
+
+
+一共分为三版，第一版刚好满足作业需求。
+
+第二版在第一版的基础上进行功能完善。
+
+第三版重新设计界面，功能增加，逻辑较为清晰。
+
+注：均未带 exe 文件。只带了源代码和可执行的 jar 包。
+
+界面对比：
+
+![界面对比](D:\Code\someTools\addressList\browse\界面对比.gif)
+
+功能演示：
+
+第一版：（第二版差不多）
+
+![界面演示](D:\Code\someTools\addressList\browse\界面演示.gif)
+
+第三版：
+
+![新界面](D:\Code\someTools\addressList\browse\新界面.gif)
+
+一些小工具和文档模板。
+
+1. 绘画板：简易绘画板，canvas。
+2. 作业代码模板：适用于在文档内贴程序代码和运行截图的作业形式。
+3. todoList：简易的 Todo List，用 Vue.js 搭建。
