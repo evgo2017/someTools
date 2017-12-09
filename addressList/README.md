@@ -8,21 +8,25 @@
 
 第三版重新设计界面，功能增加，逻辑较为清晰。
 
-注：均未带 exe 文件。只带了源代码和可执行的 jar 包。
+注：
+
+① 具体内容请在我的公众号“随风前行”内查看相关文章。
+
+② 均未带 exe 文件。只带了源代码和可执行的 jar 包。
 
 界面对比：
 
-![界面对比](D:\Code\someTools\addressList\browse\界面对比.gif)
+![界面对比](.\browse\界面对比.gif)
 
 功能演示：
 
 第一版：（第二版差不多）
 
-![界面演示](D:\Code\someTools\addressList\browse\界面演示.gif)
+![界面演示](.\browse\界面演示.gif)
 
 第三版：
 
-![新界面](D:\Code\someTools\addressList\browse\新界面.gif)
+![新界面](.\browse\新界面.gif)
 
 一些小工具和文档模板。
 
