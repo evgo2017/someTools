@@ -16,20 +16,14 @@
 
 界面对比：
 
-![界面对比](.\browse\界面对比.gif)
+![界面对比](https://github.com/evenIfAlsoGo/someTools/blob/master/addressList/browse/%E7%95%8C%E9%9D%A2%E5%AF%B9%E6%AF%94.gif)
 
 功能演示：
 
 第一版：（第二版差不多）
 
-![界面演示](.\browse\界面演示.gif)
+![界面演示](https://github.com/evenIfAlsoGo/someTools/blob/master/addressList/browse/%E7%95%8C%E9%9D%A2%E6%BC%94%E7%A4%BA.gif)
 
 第三版：
 
-![新界面](.\browse\新界面.gif)
-
-一些小工具和文档模板。
-
-1. 绘画板：简易绘画板，canvas。
-2. 作业代码模板：适用于在文档内贴程序代码和运行截图的作业形式。
-3. todoList：简易的 Todo List，用 Vue.js 搭建。
+![新界面](https://github.com/evenIfAlsoGo/someTools/blob/master/addressList/browse/%E7%95%8C%E9%9D%A2%E6%BC%94%E7%A4%BA.gif)
