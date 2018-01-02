@@ -1,0 +1,74 @@
+<!--如果给todos数组添加的对象加上id，如果是鼠标点击添加就是 MouseEvent，
+	回车添加就是 KeyboardEvent，结果去掉id也正常运行，
+	而且todos数组的对象可以通过vm.todos[index]访问，所以可以不加id
+	但目前不清除deleteTodo(index)的index是怎么运行的
+
+	垃圾桶 svg 选择阿里巴巴矢量库，查找“垃圾桶”第二行第一个-->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Todo List</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<section id="todoApp">
+		<header class="header">
+			<h1>TodoList</h1>
+			<input type="text" v-model="newTodoText" @keyup.enter="addNewTodo" placeholder="请输入新项目"/>
+			<button class="btn btn-primary" @click="addNewTodo">添加</button>
+			<button class="btn btn-danger" @click="achieveAll">清空</button>
+		</header>
+		<div class="main">
+			<ul>
+				<li v-for="(todo, index) in todos" >
+					<input type="text" v-model="todo.title">
+					<button class="btn btn-success" @click="achieve(index, todo.title)">
+						<img src="images/finish.svg" class="finishImg">
+					</button>
+					<button class="btn btn-danger" @click="abandon(index, todo.title, 'todos')">丢弃</button>
+				</li>
+			</ul>
+		</div>
+		<footer class="footer">
+			<section class="achieve">
+				<img src="images/achieve2.svg" class="achieveImg" @click="showData('showAchieves')">
+				<div id="achieveList" v-show="showAchieves">
+					<ol>
+						<li v-for="achieve in achieves" >
+							{{achieve.title}}
+							<button class="btn btn-success" @click="restore(index, achieve.title, 'achieves')">还原</button>
+							<button class="btn btn-danger" @click="abandon(index, achieve.title, 'achieves')">丢弃</button>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section class="help">
+				<img src="images/help.svg" class="helpImg" @click="showData('showHelp')">
+				<div id="helpList" v-show="showHelp">
+					<ol>
+						<li>测试文字</li>
+						<li>测试文字123</li>
+					</ol>
+				</div>
+			</section>
+			<section class="trash">
+				<img src="images/trash.svg" class="trashImg" @click="showData('showTrash')">
+				<div id="trashList" v-show="showTrash">
+					<button class="btn btn-danger" @click="deleteAll">删除</button>
+					<ol>
+						<li v-for="trash in trash" >
+							{{trash.title}}
+						</li>
+					</ol>
+				</div>
+			</section>
+		</footer>
+	</section>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/style.js"></script>
+</html>
