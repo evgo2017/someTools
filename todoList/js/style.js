@@ -17,11 +17,6 @@ new Vue({
 		addNewTodo: function () {
 			this.todos.push({ title: this.newTodoText });
 		},
-		showData: function (value) {
-			if(value=='showAchieves') this.showAchieves = !this.showAchieves;
-			else if(value=='showHelp') this.showHelp = !this.showHelp;
-			else if(value=='showTrash') this.showTrash = !this.showTrash;
-		},
 		achieve: function (index, value) {
 			this.todos.splice(index, 1);
 			this.$set(this.achieves, this.achieves.length ,{ title: value });

@@ -35,7 +35,7 @@
 		</div>
 		<footer class="footer">
 			<section class="achieve">
-				<img src="images/achieve2.svg" class="achieveImg" @click="showData('showAchieves')">
+				<img src="images/achieve2.svg" class="achieveImg" @click="showAchieves = !showAchieves">
 				<div id="achieveList" v-show="showAchieves">
 					<ol>
 						<li v-for="achieve in achieves" >
@@ -46,8 +46,8 @@
 					</ol>
 				</div>
 			</section>
-			<section class="help">
-				<img src="images/help.svg" class="helpImg" @click="showData('showHelp')">
+			<section class="help" >
+				<img src="images/help.svg" class="helpImg" @click="showHelp = !showHelp">
 				<div id="helpList" v-show="showHelp">
 					<ol>
 						<li>测试文字</li>
@@ -56,7 +56,7 @@
 				</div>
 			</section>
 			<section class="trash">
-				<img src="images/trash.svg" class="trashImg" @click="showData('showTrash')">
+				<img src="images/trash.svg" class="trashImg" @click="showTrash = !showTrash">
 				<div id="trashList" v-show="showTrash">
 					<button class="btn btn-danger" @click="deleteAll">删除</button>
 					<ol>
