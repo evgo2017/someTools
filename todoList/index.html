@@ -38,9 +38,9 @@
 			<section class="achieve">
 				<img src="images/achieve2.svg" class="achieveImg" @click="showAchieves = !showAchieves">
 				<div id="achieveList" v-show="showAchieves">
+					<button class="btn btn-success" @click="changeAllDataArr('achieves','todos')">全还原</button>
+					<button class="btn btn-danger" @click="changeAllDataArr('achieves','trash')">全丢弃</button>
 					<ol>
-						<button class="btn btn-success" @click="changeAllDataArr('achieves','todos')">全还原</button>
-						<button class="btn btn-danger" @click="changeAllDataArr('achieves','trash')">全丢弃</button>
 						<li v-for="achieve in achieves" >
 							{{achieve.title}}
 							<button class="btn btn-success" @click="changeDataArr(index, achieve.title, 'achieves', 'todos')">还原</button>
