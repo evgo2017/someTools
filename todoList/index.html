@@ -20,16 +20,17 @@
 			<h1>TodoList</h1>
 			<input type="text" v-model="newTodoText" @keyup.enter="addNewTodo" placeholder="请输入新项目"/>
 			<button class="btn btn-primary" @click="addNewTodo">添加</button>
-			<button class="btn btn-danger" @click="achieveAll">清空</button>
+			<button class="btn btn-success" @click="changeAllDataArr('todos','achieves')">全完成</button>
+			<button class="btn btn-danger" @click="changeAllDataArr('todos','trash')">全丢弃</button>
 		</header>
 		<div class="main">
 			<ul>
 				<li v-for="(todo, index) in todos" >
 					<input type="text" v-model="todo.title">
-					<button class="btn btn-success" @click="achieve(index, todo.title)">
+					<button class="btn btn-success" @click="changeDataArr(index, todo.title, 'todos', 'achieves')">
 						<img src="images/finish.svg" class="finishImg">
 					</button>
-					<button class="btn btn-danger" @click="abandon(index, todo.title, 'todos')">丢弃</button>
+					<button class="btn btn-danger" @click="changeDataArr(index, todo.title, 'todos', 'trash')">丢弃</button>
 				</li>
 			</ul>
 		</div>
@@ -38,10 +39,12 @@
 				<img src="images/achieve2.svg" class="achieveImg" @click="showAchieves = !showAchieves">
 				<div id="achieveList" v-show="showAchieves">
 					<ol>
+						<button class="btn btn-success" @click="changeAllDataArr('achieves','todos')">全还原</button>
+						<button class="btn btn-danger" @click="changeAllDataArr('achieves','trash')">全丢弃</button>
 						<li v-for="achieve in achieves" >
 							{{achieve.title}}
-							<button class="btn btn-success" @click="restore(index, achieve.title, 'achieves')">还原</button>
-							<button class="btn btn-danger" @click="abandon(index, achieve.title, 'achieves')">丢弃</button>
+							<button class="btn btn-success" @click="changeDataArr(index, achieve.title, 'achieves', 'todos')">还原</button>
+							<button class="btn btn-danger" @click="changeDataArr(index, achieve.title, 'achieves', 'trash')">丢弃</button>
 						</li>
 					</ol>
 				</div>
@@ -58,10 +61,13 @@
 			<section class="trash">
 				<img src="images/trash.svg" class="trashImg" @click="showTrash = !showTrash">
 				<div id="trashList" v-show="showTrash">
-					<button class="btn btn-danger" @click="deleteAll">删除</button>
+					<button class="btn btn-success" @click="changeAllDataArr('trash','todos')">全还原</button>
+					<button class="btn btn-danger" @click="changeAllDataArr('trash','')">全删除</button>
 					<ol>
 						<li v-for="trash in trash" >
 							{{trash.title}}
+							<button class="btn btn-success" @click="changeDataArr(index, trash.title, 'trash', 'todos')">还原</button>
+							<button class="btn btn-danger" @click="changeDataArr(index, trash.title, 'trash', '')">删除</button>
 						</li>
 					</ol>
 				</div>

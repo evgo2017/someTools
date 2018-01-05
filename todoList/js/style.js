@@ -11,33 +11,25 @@ new Vue({
 			{ title: '测试数据 003' }
 		],
 		achieves: [],
-		trash: []
+		trash: [],
+		projects: ['todos','achieves','trash'] /*新增数组，便于判断需要操作哪一个数组，可*/
 	},
 	methods: {
+		/*获取新数据，“添加”按钮*/
 		addNewTodo: function () {
-			this.todos.push({ title: this.newTodoText });
+			this.todos.push({ title: this.newTodoText })
 		},
-		achieve: function (index, value) {
-			this.todos.splice(index, 1);
-			this.$set(this.achieves, this.achieves.length ,{ title: value });
-		},
-		achieveAll : function () {
-			this.achieves = this.achieves.concat(this.todos);
-			this.todos= [];
-		},
-		restore: function (index, value) {
-			this.achieves.splice(index, 1);
-			this.$set(this.todos, this.todos.length ,{ title: value });
-		},
-		abandon: function (index, value, arr) {
-			if(arr=='todos') this.todos.splice(index, 1);
-			else if(arr=='achieves') this.achieves.splice(index, 1);
-			this.$set(this.trash, this.trash.length ,{ title: value });
+		/*对单个元素操作*/
+		changeDataArr: function (index, value, fromArr, toArr) {
+			this[fromArr].splice(index, 1);
+			this.$set(this[toArr], this[toArr].length, { title: value });
 		},
 		/*对所有元素操作*/
-		deleteAll : function () {
-			this.trash = [];
+		changeAllDataArr: function (fromArr, toArr) {
+			if(toArr!='') {
+				this[toArr] = this[toArr].concat(this[fromArr]);
+			}
+			this[fromArr] = [];
 		}
-		
 	}
 })
