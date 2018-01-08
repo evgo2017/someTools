@@ -11,8 +11,7 @@ new Vue({
 			{ title: '测试数据 003' }
 		],
 		achieves: [],
-		trash: [],
-		projects: ['todos','achieves','trash'] /*新增数组，便于判断需要操作哪一个数组，可*/
+		trash: []
 	},
 	methods: {
 		/*获取新数据，“添加”按钮*/
