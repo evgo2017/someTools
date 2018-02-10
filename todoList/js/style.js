@@ -1,18 +1,37 @@
 new Vue({
 	el: '#todoApp',
-	data: {
-		newTodoText: '',
-		showAchieves: false,
-		showHelp: false,
-		showTrash: false,
-		todos: [
-			{ title: '测试数据 001' },
-			{ title: '测试数据 002' },
-			{ title: '测试数据 003' }
-		],
-		achieves: [],
-		trash: [],
-		projects: ['todos','achieves','trash'] /*新增数组，便于判断需要操作哪一个数组，可*/
+	data (){
+		return {
+			newTodoText: '',
+			showAchieves: false,
+			showHelp: false,
+			showTrash: false,
+			todos: [
+				{ title: '测试数据 001'},
+				{ title: '测试数据 002'},
+				{ title: '测试数据 003'}
+			],
+			achieves: [],
+			trash: []
+		}
+	},
+	components: {
+		'my-exhibition': {
+			props: {
+				fromarr :{ /*只要from后面有大写就失败了。。*/
+					type: Array
+				}
+			},
+			template: '\
+			<div>\
+				<ul>\
+					<li v-for="item in fromarr">\
+						<input type="text" v-model="item.title">\
+						<button class="btn btn-danger" @click="changeDataArr(index, item.title, fname, tname)">丢弃</button>\
+					</li>\
+				</ul>\
+			</div>',
+		}
 	},
 	methods: {
 		/*获取新数据，“添加”按钮*/
@@ -26,6 +45,7 @@ new Vue({
 		},
 		/*对所有元素操作*/
 		changeAllDataArr: function (fromArr, toArr) {
+			alert(12)
 			if(toArr!='') {
 				this[toArr] = this[toArr].concat(this[fromArr]);
 			}
