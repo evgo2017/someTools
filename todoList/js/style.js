@@ -15,24 +15,6 @@ new Vue({
 			trash: []
 		}
 	},
-	components: {
-		'my-exhibition': {
-			props: {
-				fromarr :{ /*只要from后面有大写就失败了。。*/
-					type: Array
-				}
-			},
-			template: '\
-			<div>\
-				<ul>\
-					<li v-for="item in fromarr">\
-						<input type="text" v-model="item.title">\
-						<button class="btn btn-danger" @click="changeDataArr(index, item.title, fname, tname)">丢弃</button>\
-					</li>\
-				</ul>\
-			</div>',
-		}
-	},
 	methods: {
 		/*获取新数据，“添加”按钮*/
 		addNewTodo: function () {
