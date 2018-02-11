@@ -1,4 +1,4 @@
-<!--***************************
+﻿<!--***************************
 * 2013年2月10日所写，第二版  *
 * Github: evenIfAlsoGo        *
 ***************************-->
@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>绘画板 v2.0</title>
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 	<style>
 		* {
 			margin: 0;
@@ -41,8 +40,7 @@
 			<p>非常抱歉，您的浏览器不支持Canvas,请更换浏览器使用。</p>
 		</canvas>
 	</div>
-	<div id="nav">
-	
+	<div id="nav" >
 		<div id="line">
 			<span>画笔宽度: </span>
 			<span id="lineNumber">10</span>
@@ -74,43 +72,62 @@
 	var useEraser = false
 
 	/*画布初始化*/
-	canvas.height = window.innerHeight * 0.8
+	canvas.height = window.innerHeight * 0.75
 	canvas.width = window.innerWidth * 0.8
 	ctx.lineWidth = lineWidth.value
 	canvasBgColor.value = "#FFFFFF";
 	ctx.fillStyle = canvasBgColor.value
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	/*画画时*/
+	/*PC端画画时*/
 	canvas.addEventListener("mousedown", function(event){
 		ctx.beginPath()
 		ctx.moveTo(event.offsetX, event.offsetY)
 		canvas.addEventListener("mousemove", onMouseMove, false);
-		canvas.addEventListener("mouseup",function(event){  
-      canvas.removeEventListener("mousemove",onMouseMove,false)  
-	  }, false);
+		canvas.addEventListener("mouseup",function(event){ /*鼠标离开事件*/
+			canvas.removeEventListener("mousemove",onMouseMove,false)  
+		}, false);
 	}, false)
-  function onMouseMove(event){
+	function onMouseMove(event){
 		ctx.lineTo(event.offsetX,event.offsetY);  
-    ctx.stroke(); 
+		ctx.stroke(); 
 	}
-
+	/* 移动端画画时
+	*  
+	*	引用资料：http://blog.csdn.net/qq_38082304/article/details/78144153
+	*
+	*/
+	canvas.addEventListener('touchstart',function(event){//触摸点按下事件
+        if (event.targetTouches.length == 1) {
+            var touch = event.targetTouches[0];
+            ctx.beginPath();
+            ctx.moveTo(touch.clientX-canvas.offsetLeft,touch.clientY-canvas.offsetTop);
+            canvas.addEventListener('touchmove',function (event) {//手机拖动触摸点事件
+                var touche = event.targetTouches[0];
+                ctx.lineTo(touche.clientX - canvas.offsetLeft, touche.clientY - canvas.offsetTop)
+                ctx.stroke();
+            },false)
+            canvas.addEventListener('touchend',function (event) {//手机离开屏幕的事件
+            	ctx.closePath();
+			},false)
+    	}
+	},false)
 	/*更改画笔宽度*/
 	function changeLineWidth(){
 		ctx.lineWidth = lineWidth.value 
 		lineNumber.innerHTML = lineWidth.value 
 	}		
 
-  /*更改画笔颜色*/
-  function changeLineColor(){ 
+	/*更改画笔颜色*/
+	function changeLineColor(){ 
 		ctx.strokeStyle = lineColor.value
-  }
+	}
 
-  /*更改画布背景颜色*/
-  function changeCanvasBgColor(){
-    ctx.fillStyle = canvasBgColor.value
+	/*更改画布背景颜色*/
+	function changeCanvasBgColor(){
+		ctx.fillStyle = canvasBgColor.value
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }
+	}
 
 	/*橡皮擦*/
 	function eraserCanvas(){
@@ -135,11 +152,11 @@
 	/*保存画布*/
 	function saveCanvas(){
 		var image = canvas.toDataURL();   
-    document.getElementById("saveCanvas").href = image;
+		document.getElementById("saveCanvas").href = image;
     /* //引用自 http://blog.csdn.net/jia20003/article/details/8948005
 		var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");   
     window.location.href=image;
     */
-	}
+}
 </script>
 </html>

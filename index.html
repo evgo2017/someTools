@@ -4,18 +4,71 @@
 	<meta charset="UTF-8">
 	<title>Some Tools</title>
 </head>
+<style type="text/css">
+	h1 {
+		text-align: center;
+	}
+	li {
+		font-size: 20px;
+		font-family: "宋体";
+		height: 50px;
+		line-height: 50px;
+		
+		padding-left: 15px;
+		border: 1px solid grey;
+		background: #EBF5DF	
+	}
+	li:nth-child(odd){
+		background: yellowgreen
+	}
+	.time {
+		float: right;
+		padding-right: 15px; 
+	}
+</style>
 <body>
-		<p>注：暂时均未设置样式</p>
+		<h1>小工具演示目录：</h1>
 		<ol>
-			<li> 绘画板_v1.0：<a href="drawingBoard（绘画板）/drawingBoard_v1.0/index.html">在线浏览</a></li>
-			<li> 作业代码模板：<a href="simpleMould/作业代码模版.docx">下载此文档</a></li>
-			<li> Todo List：<a href="todoList/index.html">在线浏览</a></li>
-			<li> 简易通讯录：暂无，可浏览文件夹内GIF图</a></li>
-			<li> 绘画板_v2.0：<a href="drawingBoard（绘画板）/drawingBoard_v2.0/index.html">在线浏览</a></li>
+			<li>
+				<span>绘画板_v1.0：<a id="drawingBoard_v1">在线浏览</a></span>
+				<span class="time">2017.2.01</span>
+			</li>
+			<li>
+				<span>作业代码模板：<a id="codeTaskTemplet">下载此文档</a></span>
+				<span class="time">2017.11.04</span>
+			</li>	
+			<li>
+				<span>Java简易通讯录：<a id="JAVA_addressList">浏览地址</a></span>
+				<span class="time">2017.12.09</span>
+			</li>
+			<li> 
+				<span>Todo List By Vue：<a id="todoList">在线浏览</a></span>
+				<span class="time">2018.01.05</span>
+			</li>
+			<li> 
+				<span>绘画板_v2.0：<a id="drawingBoard_v2">在线浏览</a></span>
+				<span class="time">2018.02.10</span>
+			</li>
 		</ol>	
 </body>
 <script>
 	/*获取地址*/
-	
+	var drawingBoard = "drawingBoard（绘画板）/"
+	var taskTemplet = "taskTemplet/"
+
+	/*绘画板_v1.0*/
+	document.getElementById("drawingBoard_v1").href = drawingBoard+"drawingBoard_v1.0/"+"index.html"
+
+	/*作业代码模板*/
+	document.getElementById("codeTaskTemplet").href = taskTemplet+"作业代码模版.docx"
+
+	/*Todo List By Vue*/
+	document.getElementById("todoList").href = "todoList/"+"index.html"
+
+	/*Java简单通讯录*/
+	document.getElementById("JAVA_addressList").href = "addressList（JAVA简易通讯录）/"+"demo"
+
+	/*绘画板_v2.0*/
+	document.getElementById("drawingBoard_v2").href = drawingBoard+"drawingBoard_v2.0/"+"index.html"
 </script>
 </html>
