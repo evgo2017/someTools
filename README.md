@@ -1,4 +1,10 @@
 # someTools
+目标：(暑假填坑)
+
+- [ ] 遍历文件夹，自动生成目录
+
+
+
 一些小工具和文档模板。
 
 在线浏览：http://evenifalsogo.com/someTools/

@@ -25,50 +25,31 @@
 		float: right;
 		padding-right: 15px; 
 	}
+	a {
+		color: #000;
+	}
 </style>
 <body>
-		<h1>小工具演示目录：</h1>
-		<ol>
-			<li>
-				<span>绘画板_v1.0：<a id="drawingBoard_v1">在线浏览</a></span>
-				<span class="time">2017.02.01</span>
-			</li>
-			<li>
-				<span>作业代码模板：<a id="codeTaskTemplet">下载此文档</a></span>
-				<span class="time">2017.11.04</span>
-			</li>	
-			<li>
-				<span>Java简易通讯录：<a id="JAVA_addressList">浏览地址</a></span>
-				<span class="time">2017.12.09</span>
-			</li>
-			<li> 
-				<span>Todo List By Vue：<a id="todoList">在线浏览</a></span>
-				<span class="time">2018.01.05</span>
-			</li>
-			<li> 
-				<span>绘画板_v2.0：<a id="drawingBoard_v2">在线浏览</a></span>
-				<span class="time">2018.02.10</span>
-			</li>
-		</ol>	
+	<h1>小工具演示目录：</h1>
+	<ol id="list">
+		<!--<li>-->
+			<!--<span><a>绘画板_v1.0：</a></span>-->
+			<!--<span class="time">2017.02.01</span>-->
+		<!--</li>-->
+	</ol>
 </body>
 <script>
-	/*获取地址*/
-	var drawingBoard = "drawingBoard（绘画板）/"
-	var taskTemplet = "taskTemplet/"
-
-	/*绘画板_v1.0*/
-	document.getElementById("drawingBoard_v1").href = drawingBoard+"drawingBoard_v1.0/"+"index.html"
-
-	/*作业代码模板*/
-	document.getElementById("codeTaskTemplet").href = taskTemplet+"作业代码模版.docx"
-
-	/*Todo List By Vue*/
-	document.getElementById("todoList").href = "todoList/"+"index.html"
-
-	/*Java简单通讯录*/
-	document.getElementById("JAVA_addressList").href = "addressList（JAVA简易通讯录）/"+"demo/"+"demo.html"
-
-	/*绘画板_v2.0*/
-	document.getElementById("drawingBoard_v2").href = drawingBoard+"drawingBoard_v2.0/"+"index.html"
+	var listData = [
+		["绘画板 v1.0","drawingBoard（绘画板）/drawingBoard_v1.0","2017.02.01"],
+		["作业模板","simpleMould（作业模板）","2017.11.04"],
+        ["JAVA简易通讯录","addressList（JAVA简易通讯录）","2017.12.09"],
+		["TodoList","todoList","2018.01.05"],
+		["绘画板 v2.0","drawingBoard（绘画板）/drawingBoard_v2.0","2018.02.15"]]
+	var list = document.getElementById("list"),
+		listHtml = ""
+	for(let i = 0; i<listData.length; i++) {
+	    listHtml += "<li><span><a href='./"+listData[i][1]+"/index.html'>"+listData[i][0]+"</a></span><span class='time'>"+listData[i][2]+"</span></li>\n"
+	}
+	list.innerHTML = listHtml
 </script>
 </html>
