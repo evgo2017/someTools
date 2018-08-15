@@ -1,0 +1,20 @@
+{
+  "name": "adapp",
+  "version": "1.0.0",
+  "description": "automatically download the application by providing json ",
+  "main": "adapp.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evenIfAlsoGo/adapp.git"
+  },
+  "author": "evenIfAlsoGo <evenIfAlsoGo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evenIfAlsoGo/adapp/issues"
+  },
+  "homepage": "https://github.com/evenIfAlsoGo/adapp#readme",
+  "dependencies": {
+    "download": "^6.2.5",
+    "puppeteer": "^1.2.0"
+  }
+}
