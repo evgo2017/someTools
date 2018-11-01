@@ -23,16 +23,17 @@ def word2Pdf(filePath, words):
         doc = None
         for i in range(len(words)):
             print(i)
-            file = words[i]
-            fromFile = os.path.join(filePath, file)
-            toFile = changeSufix2Pdf(fromFile)
-            
-            print ("转换："+file+"文件中...")
+            fileName = words[i] # 文件名称
+            fromFile = os.path.join(filePath, fileName) # 文件地址
+            toFileName = changeSufix2Pdf(fileName) # 生成的文件名称
+            toFile = toFileJoin(filePath,toFileName) # 生成的文件地址
+
+            print ("转换："+fileName+"文件中...")
             # 某文件出错不影响其他文件打印
             try:
                 doc = word.Documents.Open(fromFile)
-                doc.SaveAs(toFile,17)
-                print ("转换到："+os.path.basename(toFile)+"完成")
+                doc.SaveAs(toFile,17) # 生成的所有 PDF 都会在 PDF 文件夹中
+                print ("转换到："+toFileName+"完成")
             except Exception as e:
                 print(e)
             # 关闭 Word 进程
@@ -64,19 +65,20 @@ def excel2Pdf(filePath, excels):
         ws = None
         for i in range(len(excels)):
             print(i)
-            file = excels[i]
-            fromFile = os.path.join(filePath, file)
+            fileName = excels[i] # 文件名称
+            fromFile = os.path.join(filePath, fileName) # 文件地址
             
-            print ("转换："+file+"文件中...")
+            print ("转换："+fileName+"文件中...")
             # 某文件出错不影响其他文件打印
             try:
                 wb = excel.Workbooks.Open(fromFile)
-                # 一个工作簿可能有多张工作表
-                for j in range(wb.Worksheets.Count): # 工作表数量
-                    toFile = addWorksheetsOrder(fromFile, j+1) # 每一张都需要打印
+                for j in range(wb.Worksheets.Count): # 工作表数量，一个工作簿可能有多张工作表
+                    toFileName = addWorksheetsOrder(fileName, j+1) # 生成的文件名称
+                    toFile = toFileJoin(filePath,toFileName) # 生成的文件地址
+                    
                     ws = wb.Worksheets(j+1) # 若为[0]则打包后会提示越界
-                    ws.ExportAsFixedFormat(0,toFile)
-                    print ("转换至："+os.path.basename(toFile)+"文件完成")
+                    ws.ExportAsFixedFormat(0,toFile) # 每一张都需要打印
+                    print ("转换至："+toFileName+"文件完成")
             except Exception as e:
                 print(e)
         # 关闭 Excel 进程
@@ -108,16 +110,17 @@ def ppt2Pdf(filePath, ppts):
 
         for i in range(len(ppts)):
             print(i)
-            file = ppts[i]
-            fromFile = os.path.join(filePath, file)
-            toFile = changeSufix2Pdf(fromFile)
+            fileName = ppts[i] # 文件名称
+            fromFile = os.path.join(filePath, fileName) # 文件地址
+            toFileName = changeSufix2Pdf(fileName) # 生成的文件名称
+            toFile = toFileJoin(filePath,toFileName) # 生成的文件地址
 
-            print ("转换："+file+"文件中...")
+            print ("转换："+fileName+"文件中...")
             try:
                 ppt = powerpoint.Presentations.Open(fromFile,WithWindow=False)
                 if ppt.Slides.Count>0:
                     ppt.SaveAs(toFile, 32) # 如果为空则会跳出提示框（暂时没有找到消除办法）
-                    print ("转换至："+os.path.basename(toFile)+"文件完成")
+                    print ("转换至："+toFileName+"文件完成")
                 else:
                     print("（错误，发生意外：此文件为空，跳过此文件）")
             except Exception as e:
@@ -140,10 +143,15 @@ def changeSufix2Pdf(file):
 # 添加工作簿序号
 def addWorksheetsOrder(file, i):
     return file[:file.rfind('.')]+"_工作表"+str(i)+".pdf"
+# 转换地址
+def toFileJoin(filePath,file):
+    return os.path.join(filePath,'pdf',file[:file.rfind('.')]+".pdf")
+    
+
 
 # 开始程序
 print ("====================程序开始====================")
-print ("【程序功能】将目标路径下内所有的ppt、excel、word均生成一份对应的 PDF 文件（需已经安装office，不包括子文件夹）")
+print ("【程序功能】将目标路径下内所有的ppt、excel、word均生成一份对应的 PDF 文件，存在新生成的 pdf 文件夹中（需已经安装office，不包括子文件夹）")
 print ("【作者】：evgo，公众号（随风前行），Github（evenIfAlsoGo）\n")
 print ("注意：若某PPT和Excel文件为空，则会出错跳过此文件。若转换 PPT 时间过长，请查看是否有报错窗口等待确认，暂时无法彻底解决PPT的窗口问题（为空错误已解决）。在关闭进程过程中，时间可能会较长，十秒左右，请耐心等待。")
 filePath = input ("输入目标路径：(若为当前路径："+os.getcwd()+"，请直接回车）\n")
@@ -167,10 +175,15 @@ for fn in os.listdir(filePath):
 
 # 调用方法
 print ("====================开始转换====================")
+
+# 新建 pdf 文件夹，所有生成的 PDF 文件都放在里面
+folder = filePath + '\\pdf\\'
+if not os.path.exists(folder):
+    os.makedirs(folder)
+
 word2Pdf(filePath,words)
 excel2Pdf(filePath,excels)
 ppt2Pdf(filePath,ppts)
-
 print ("====================转换结束====================")
 print ("\n====================程序结束====================")
 os.system("pause")
