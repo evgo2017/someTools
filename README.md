@@ -1,6 +1,8 @@
 # someTools
 一些小工具和文档模板。
 
+ [浏览地址](https://github.com/evgo2017/someTools)
+
 ## 文件夹含义
 
 | 文件夹名称        | 含义                              | 添加时间                  | 最近更新时间              |

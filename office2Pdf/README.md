@@ -1,6 +1,8 @@
 # office2Pdf
 
-作者：evgo，公众号（随风前行），Github（evenIfAlsoGo）
+作者：evgo，公众号（随风前行），Github（evgo2017）
+
+文件地址：[GitHub 地址](https://github.com/evgo2017/someTools/tree/master/office2Pdf)
 
 ## 程序功能：
 
@@ -50,7 +52,7 @@ windows 下直接打开即可运行程序，不需要安装 Python 环境。
 
 运行示例图：
 
-![py运行示例](https://github.com/evenIfAlsoGo/someTools/blob/master/office2Pdf/example.png)
+![py运行示例](https://evgo2017.com/someTools/office2Pdf/example.png)
 
 （Python 程序运行示例图）
 
