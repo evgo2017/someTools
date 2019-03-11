@@ -18,15 +18,15 @@ Java 简易通讯录带数据库（derby，一个小jar包）
 
 ### 三版本界面对比 
 
-![界面对比](https://evgo2017.com/someTools/addressListByJava/assets/界面对比.gif)
+![界面对比](https://evgo2017.github.io/someTools/addressListByJava/assets/界面对比.gif)
 
 ### v2.0 操作演示 
 
-![界面演示](https://evgo2017.com/someTools/addressListByJava/assets/界面演示.gif)
+![界面演示](https://evgo2017.github.io/someTools/addressListByJava/assets/界面演示.gif)
 
 ### v3.0 操作演示
 
-![新界面](https://evgo2017.com/someTools/addressListByJava/assets/新界面.gif)
+![新界面](https://evgo2017.github.io/someTools/addressListByJava/assets/新界面.gif)
 
 ## 更新记录
 
